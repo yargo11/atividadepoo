@@ -40,5 +40,13 @@ public class Garcon extends Pessoa{
     public void setCarteiraTrabalho(String carteiraTrabalho) {
         this.carteiraTrabalho = carteiraTrabalho;
     }
+
+    public void add(Garcon garcons) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void remove(Garcon garcons) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
