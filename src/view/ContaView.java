@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ClienteController;
 import controller.ContaController;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import model.Conta;
 import model.Garcon;
 import model.ItemConta;
 import model.Mesa;
+import repositories.ClienteRepository;
 import repositories.ContaRepository;
 import repositories.GarconRepository;
 import controller.GarconController;
@@ -39,6 +41,9 @@ public class ContaView {
 	public GarconRepository garconRepository = new GarconRepository();
 	public GarconController garconController = new GarconController(garconRepository);
 	
+	public ClienteRepository clienteRepository = new ClienteRepository();
+	public ClienteController clienteController = new ClienteController(clienteRepository);
+	
 
 	public ContaController getContaController() {
 		return contaController;
@@ -59,25 +64,47 @@ public class ContaView {
 	public Object getGarcons( List<Garcon> list) {
 		return list.toString();
 	}
+	
+	public Object getClientes( List<Cliente> list) {
+		return list.toString();
+	}
 
+	 /*public String listarGarcon() {
+	        String lista = "Lista de garcons \n";
+	        for (Garcon garcon : garconRepository.listar()) {
+	            lista += garcon + "\n";
+	        }
+	        return lista;
+	    }
+	 
+	 public String listarCliente() {
+	        String lista = "Lista de clientes \n";
+	        for (Cliente cliente : clienteRepository.listar()) {
+	            lista += cliente+ "\n";
+	        }
+	        return lista;
+	    }*/
+	 
 	// public Conta executar() {
 	public Conta executar() {
 
 		// ContaView contaView = new ContaView();
 		
 		while (true) {
-			//List<Garcon> garcons = new ArrayList<Garcon>();
-			//List<Garcon> garcons = garconController.listar();
-			List<Garcon> garcons = getGarconController.listar();
+			List<Garcon> garcons = new ArrayList<Garcon>();
 
 			Garcon garcon = (Garcon) JOptionPane.showInputDialog(null, "Escolha um garçon", "Lista de garçons",
 					JOptionPane.QUESTION_MESSAGE, null, garcons.toArray(), this.getGarcons(garcons));
 
-			String[] clientes = { "Janine", "Chefe", "Voce-Sabe-Quem" };
+			
+			List<Cliente> clientes = new ArrayList<Cliente>();
+			
+			
+			//String[] clientes = { "Janine", "Chefe", "Voce-Sabe-Quem" };
 			Cliente cliente = (Cliente) JOptionPane.showInputDialog(null, "Escolha um cliente", "Lista de clientes",
-					JOptionPane.QUESTION_MESSAGE, null, clientes, clientes[0]);
+					JOptionPane.QUESTION_MESSAGE, null, clientes.toArray(), this.getClientes(clientes));
 
-			String[] mesas = { "01", "02", "03" };
+			//String[] mesas = { "01", "02", "03" };
 			Mesa mesa = (Mesa) JOptionPane.showInputDialog(null, "Escolha uma mesa", "Lista de mesas",
 					JOptionPane.QUESTION_MESSAGE, null, mesas, mesas[0]);
 
