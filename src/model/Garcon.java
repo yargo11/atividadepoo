@@ -49,4 +49,9 @@ public class Garcon extends Pessoa{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return getNome() + " - " + getCpf() + " - " + getEndereco() + " - " + getTelefone() + " - " + matricula + " - " + carteiraTrabalho + " - " + salario;
+    }
 }

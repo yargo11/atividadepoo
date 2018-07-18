@@ -15,53 +15,50 @@ import repositories.ItemRepository;
  * @author itamir.filho
  */
 public class ItemView {
-    
-    private ItemController itemController;
-    
-    private ItemRepository itemRepository;
-    
-    public ItemView() {
-        itemRepository = new ItemRepository();
-        itemController = new ItemController(itemRepository);
-    }
 
-    public ItemController getItemController() {
-        return itemController;
-    }
+	private ItemController itemController;
 
-    public void setItemController(ItemController itemController) {
-        this.itemController = itemController;
-    }
+	private ItemRepository itemRepository;
 
-    public ItemRepository getItemRepository() {
-        return itemRepository;
-    }
+	public ItemView() {
+		itemRepository = new ItemRepository();
+		itemController = new ItemController(itemRepository);
+	}
 
-    public void setItemRepository(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
-    
-    
-    public static void main(String args[]) {
-        
-        String descricao = JOptionPane.showInputDialog("Descrição:");
-        String marca = JOptionPane.showInputDialog("Marca:");
-        double valor = Double.parseDouble(JOptionPane.showInputDialog("Valor:"));
-        
-        Item item = new Item();
-        item.setDescricao(descricao);
-        item.setMarca(marca);
-        item.setValor(valor);
-       
-        ItemView itemView = new ItemView();
-        itemView.getItemController().salvar(item);
-        
-        JOptionPane.showMessageDialog(null, 
-                itemView.getItemController().listar());
-              
-        
-    }
-    
-    
-    
+	public ItemController getItemController() {
+		return itemController;
+	}
+
+	public void setItemController(ItemController itemController) {
+		this.itemController = itemController;
+	}
+
+	public ItemRepository getItemRepository() {
+		return itemRepository;
+	}
+
+	public void setItemRepository(ItemRepository itemRepository) {
+		this.itemRepository = itemRepository;
+	}
+
+	public Item executar() {
+		//ItemView itemView = new ItemView();
+
+		while (true) {
+			String descricao = JOptionPane.showInputDialog("Descrição:");
+			String marca = JOptionPane.showInputDialog("Marca:");
+			double valor = Double.parseDouble(JOptionPane.showInputDialog("Valor:"));
+
+			Item item = new Item();
+			item.setDescricao(descricao);
+			item.setMarca(marca);
+			item.setValor(valor);
+
+			itemController.salvar(item);
+
+			JOptionPane.showMessageDialog(null, getItemController().listar());
+			
+		return item;
+		}
+	}
 }

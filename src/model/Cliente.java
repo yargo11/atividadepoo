@@ -31,6 +31,10 @@ public class Cliente extends Pessoa {
         this.credito = credito;
     }
     
-    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return getNome() + " - " + getCpf() + " - " + getEndereco() + " - " + getTelefone() + " - " + cartaoFidelidade + " - " + credito;
+    }
     
 }

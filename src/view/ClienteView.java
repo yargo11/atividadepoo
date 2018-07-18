@@ -42,7 +42,8 @@ public class ClienteView {
     }
 
     public Cliente executar() {
-        
+    	
+    	while(true) {
         String nome = JOptionPane.showInputDialog("Nome: ");
         String cpf = JOptionPane.showInputDialog("CPF: ");
         String endereco = JOptionPane.showInputDialog("Endereço: ");
@@ -58,12 +59,12 @@ public class ClienteView {
         cliente.setCartaoFidelidade(cartaofidelidade);
         cliente.setCredito(credito);
         
-        ClienteView clienteView = new ClienteView();
-        clienteView.getClienteController().salvar(cliente);
         
-        JOptionPane.showMessageDialog(null, 
-                clienteView.getClienteController().listar());
+        clienteController.salvar(cliente);
+        
+        JOptionPane.showMessageDialog(null,getClienteController().listar());
         
         return cliente;
+    	}
     }
 }

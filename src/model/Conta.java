@@ -62,5 +62,10 @@ public class Conta {
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
     }
-   
+ 
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return  garcon + " - " + cliente + " - " + mesa + " - " + getItens();
+    }
 }

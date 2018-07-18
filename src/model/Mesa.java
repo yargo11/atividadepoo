@@ -54,4 +54,10 @@ public class Mesa {
         }
         return true;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return Integer.toString(numero);
+    }
 }

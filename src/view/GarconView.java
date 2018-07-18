@@ -15,55 +15,58 @@ import repositories.GarconRepository;
  * @author itamir.filho
  */
 public class GarconView {
-    
-    private GarconController pessoaController;
-    
-    private GarconRepository pessoaRepository;
-    
-    public GarconView() {
-        pessoaRepository = new GarconRepository();
-        pessoaController = new GarconController(pessoaRepository);
-    }
 
-    public GarconController getGarconController() {
-        return pessoaController;
-    }
+	private GarconController garconController;
 
-    public void setGarconController(GarconController pessoaController) {
-        this.pessoaController = pessoaController;
-    }
+	private GarconRepository garconRepository;
 
-    public GarconRepository getGarconRepository() {
-        return pessoaRepository;
-    }
+	public GarconView() {
+		garconRepository = new GarconRepository();
+		garconController = new GarconController(garconRepository);
+	}
 
-    public void setGarconRepository(GarconRepository pessoaRepository) {
-        this.pessoaRepository = pessoaRepository;
-    }
-    
-    public static void main(String[] args) {
-        
-        String nome = JOptionPane.showInputDialog("Nome: ");
-        String cpf = JOptionPane.showInputDialog("CPF: ");
-        String endereco = JOptionPane.showInputDialog("Endereço: ");
-        String telefone = JOptionPane.showInputDialog("Telefone: ");
-        String matricula = JOptionPane.showInputDialog("Matricula: ");
-        String carteiraTrabalho = JOptionPane.showInputDialog("Carteira Trabalho: ");
-        double salario = Double.parseDouble(JOptionPane.showInputDialog("Salario:"));
-        
-        Garcon garcon = new Garcon();
-        garcon.setNome(nome);
-        garcon.setCpf(cpf);
-        garcon.setEndereco(endereco);
-        garcon.setTelefone(telefone);
-        garcon.setMatricula(matricula);
-        garcon.setCarteiraTrabalho(carteiraTrabalho);
-        garcon.setSalario(salario);
-        
-        GarconView garconView = new GarconView();
-        garconView.getGarconController().salvar(garcon);
-        
-        JOptionPane.showMessageDialog(null, 
-                garconView.getGarconController().listar());
-    }
+	public GarconController getGarconController() {
+		return garconController;
+	}
+
+	public void setGarconController(GarconController garconController) {
+		this.garconController = garconController;
+	}
+
+	public GarconRepository getGarconRepository() {
+		return garconRepository;
+	}
+
+	public void setGarconRepository(GarconRepository garconRepository) {
+		this.garconRepository = garconRepository;
+	}
+
+	public Garcon executar(){
+
+		//GarconView garconView = new GarconView();
+		while (true) {
+			String nome = JOptionPane.showInputDialog("Nome: ");
+			String cpf = JOptionPane.showInputDialog("CPF: ");
+			String endereco = JOptionPane.showInputDialog("Endereço: ");
+			String telefone = JOptionPane.showInputDialog("Telefone: ");
+			String matricula = JOptionPane.showInputDialog("Matricula: ");
+			String carteiraTrabalho = JOptionPane.showInputDialog("Carteira Trabalho: ");
+			double salario = Double.parseDouble(JOptionPane.showInputDialog("Salario:"));
+
+			Garcon garcon = new Garcon();
+			garcon.setNome(nome);
+			garcon.setCpf(cpf);
+			garcon.setEndereco(endereco);
+			garcon.setTelefone(telefone);
+			garcon.setMatricula(matricula);
+			garcon.setCarteiraTrabalho(carteiraTrabalho);
+			garcon.setSalario(salario);
+
+			garconController.salvar(garcon);
+
+			JOptionPane.showMessageDialog(null, getGarconController().listar());
+			
+			return garcon;
+		}
+	}
 }

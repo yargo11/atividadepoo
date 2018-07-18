@@ -7,6 +7,8 @@ package model;
 
 import java.util.List;
 
+import controller.ItemContaController;
+
 /**
  *
  * @author itamir.filho
@@ -56,5 +58,10 @@ public class ItemConta {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+    
+    @Override
+    public String toString() {
+        return conta + " - " + item + " - " + quantidade;
+    }    
     
 }

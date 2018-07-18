@@ -15,42 +15,47 @@ import repositories.MesaRepository;
  * @author itamir.filho
  */
 public class MesaView {
-    
-    private MesaController mesaController;
-    
-    private MesaRepository mesaRepository;
-    
-    public MesaView() {
-        mesaRepository = new MesaRepository();
-        mesaController = new MesaController(mesaRepository);
-    }
 
-    public MesaController getMesaController() {
-        return mesaController;
-    }
+	private MesaController mesaController;
 
-    public void setMesaController(MesaController mesaController) {
-        this.mesaController = mesaController;
-    }
+	private MesaRepository mesaRepository;
 
-    public MesaRepository getMesaRepository() {
-        return mesaRepository;
-    }
+	public MesaView() {
+		mesaRepository = new MesaRepository();
+		mesaController = new MesaController(mesaRepository);
+	}
 
-    public void setMesaRepository(MesaRepository mesaRepository) {
-        this.mesaRepository = mesaRepository;
-    }
- 
-    public static void main(String[] args) {
-        int numero = Integer.parseInt(JOptionPane.showInputDialog("Numero:"));
-        
-        Mesa mesa = new Mesa();
-        mesa.setNumero(numero);
-        
-        MesaView mesaView = new MesaView();
-        mesaView.getMesaController().salvar(mesa);
-        
-        JOptionPane.showMessageDialog(null, 
-                mesaView.getMesaController().listar());
-    }
+	public MesaController getMesaController() {
+		return mesaController;
+	}
+
+	public void setMesaController(MesaController mesaController) {
+		this.mesaController = mesaController;
+	}
+
+	public MesaRepository getMesaRepository() {
+		return mesaRepository;
+	}
+
+	public void setMesaRepository(MesaRepository mesaRepository) {
+		this.mesaRepository = mesaRepository;
+	}
+
+	public Mesa executar() {
+
+		//MesaView mesaView = new MesaView();
+
+		while (true) {
+			int numero = Integer.parseInt(JOptionPane.showInputDialog("Numero:"));
+
+			Mesa mesa = new Mesa();
+			mesa.setNumero(numero);
+
+			mesaController.salvar(mesa);
+
+			JOptionPane.showMessageDialog(null, getMesaController().listar());
+			
+			return mesa;
+		}
+	}
 }
